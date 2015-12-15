@@ -2,7 +2,7 @@
 
 var allProducts = [];
 //faster way instead of typing out below 14 line new Product--this is variable array for it
-var productNames = ['boots','chair','scissors', 'water_can', 'wine_glass'];
+var productNames = ['boots','chair','scissors', 'water_can', 'wine_glass', 'bag', 'banana', 'cthulhu', 'dragon', 'pen', 'shark', 'sweep', 'unicorn', 'usb'];
 
 function Product (name, path) {
   this.name = name;
@@ -81,30 +81,34 @@ var productRank = {
 };
 
 productRank.leftEl.addEventListener('click', function(){
-  console.log('this is old number: ' + productRank.leftObj.tally); //leftObj refers to object in our tally array
   // productRank.tallyVotes();
   productRank.leftObj.tally += 1;
   productRank.totalClicks += 1;
-  console.log(productRank.leftObj.name + 'has' + productRank.leftObj.tally); //leftObj refers to object in our tally array
+  console.log(productRank.leftObj.name + ' has ' + productRank.leftObj.tally); //leftObj refers to object in our tally array
   productRank.showResults();//calling function above
   productRank.displayImages();
 
 }); //leftEl is property that holds value
 
 productRank.midEl.addEventListener('click', function(){
-  console.log('this is old number: ' + productRank.midObj.tally); //leftObj refers to object in our tally array
   // productRank.tallyVotes();
   productRank.midObj.tally += 1;
-  console.log('this is new number: ' + productRank.midObj.tally); //leftObj refers to object in our tally array
+  productRank.totalClicks += 1;
+
+  console.log(productRank.midObj.name + ' has ' + productRank.midObj.tally); //leftObj refers to object in our tally array
+  productRank.showResults();//calling function above
   productRank.displayImages();
 
 });
 
 productRank.rightEl.addEventListener('click', function(){
-  console.log('this is old number: ' + productRank.rightObj.tally); //leftObj refers to object in our tally array
+
   // productRank.tallyVotes();
   productRank.rightObj.tally += 1;
-  console.log('this is new number: ' + productRank.rightObj.tally); //leftObj refers to object in our tally array
+  productRank.totalClicks += 1;
+
+  console.log(productRank.rightObj.name + ' has ' + productRank.rightObj.tally); //leftObj refers to object in our tally array
+  productRank.showResults();//calling function above
   productRank.displayImages();
 
 });
@@ -119,17 +123,17 @@ productRank.displayImages();
 
 //long way!
 //faster way: look at commonalities, product, name, filepath in each line below
-var bag = new Product('bag', "img/bag.jpg");
-var banana = new Product('banana', "img/banana.jpg");
-var boots = new Product('boots', "img/boots.jpg");
-var chair = new Product('chair', "img/chair.jpg");
-var cthulhu = new Product('cthulhu', "img/cthulhu.jpg");
-var dragon = new Product('dragon', "img/dragon.jpg");
-var pen = new Product('pen', "img/pen.jpg");
-var scissors = new Product('scissors', "img/scissors.jpg");
-var shark = new Product('shark', "img/shark.jpg");
-var sweep = new Product('sweep', "img/sweep.png");
-var unicorn = new Product('unicorn', "img/unicorn.jpg");
-var usb = new Product('usb', "img/usb.gif");
-var water_can = new Product('water_can', "img/water_can.jpg");
-var wine_glass = new Product('glass', "img/wine_glass.jpg");
+// var bag = new Product('bag', "img/bag.jpg");
+// var banana = new Product('banana', "img/banana.jpg");
+// var boots = new Product('boots', "img/boots.jpg");
+// var chair = new Product('chair', "img/chair.jpg");
+// var cthulhu = new Product('cthulhu', "img/cthulhu.jpg");
+// var dragon = new Product('dragon', "img/dragon.jpg");
+// var pen = new Product('pen', "img/pen.jpg");
+// var scissors = new Product('scissors', "img/scissors.jpg");
+// var shark = new Product('shark', "img/shark.jpg");
+// var sweep = new Product('sweep', "img/sweep.png");
+// var unicorn = new Product('unicorn', "img/unicorn.jpg");
+// var usb = new Product('usb', "img/usb.gif");
+// var water_can = new Product('water_can', "img/water_can.jpg");
+// var wine_glass = new Product('glass', "img/wine_glass.jpg");
