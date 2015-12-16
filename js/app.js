@@ -1,7 +1,6 @@
 
 
 var allProducts = [];
-//faster way instead of typing out below 14 line new Product--this is variable array for it
 var productNames = ['boots','chair','scissors', 'water_can', 'wine_glass', 'bag', 'banana', 'cthulhu', 'dragon', 'pen', 'shark', 'sweep', 'unicorn', 'usb'];
 
 function Product (name, path) {
@@ -10,6 +9,7 @@ function Product (name, path) {
   this.tally = 0;
   this.views = 0;
   allProducts.push(this);
+  // this.render();
 };
 
 //functions job is to create object--- this is replacing 14 var lines
@@ -21,17 +21,8 @@ function Product (name, path) {
   }
 })();
 
-//buildAlbum(); //this calls function
-//----OR----
-//otherwise to avoid more text calling make iffey (wrap these around functions) -this is not best way- it avoids availabilitly to rebuild. will be used later though.
-
-//faster way instead of typing out below 14 line new Product--
-
-//------done building products above----------
-
 //object literal
 var productRank = {
-  //using object literal
   totalClicks: 0,
   leftObj: null,
   midObj: null,
@@ -43,10 +34,8 @@ var productRank = {
   midEl: document.getElementById('img2'),
   rightEl: document.getElementById('img3'),
 
-
-  //know we need a method, so start here with method structure
   getRandomIndex: function() {
-    return Math.floor(Math.random() * productNames.length); //check mdn syntax here math.random to guarentee correction
+    return Math.floor(Math.random() * productNames.length);
   },
   //console --type in productRank.getRandomIndex and make sure it is producing correctly
   displayImages: function () {
@@ -60,9 +49,8 @@ var productRank = {
     productRank.displayImages();
     }
 
-    productRank.leftEl.src = productRank.leftObj.path; //path property value assigning it to source left element
+    productRank.leftEl.src = productRank.leftObj.path;
     productRank.leftEl.id = productRank.leftObj.name;
-
 
     productRank.midEl.src = productRank.midObj.path;
     productRank.midEl.id = productRank.midObj.name;
@@ -77,63 +65,60 @@ var productRank = {
       this.resultsEl.hidden = false;
     }
   }
-
 };
 
 productRank.leftEl.addEventListener('click', function(){
-  // productRank.tallyVotes();
   productRank.leftObj.tally += 1;
   productRank.totalClicks += 1;
-  console.log(productRank.leftObj.name + ' has ' + productRank.leftObj.tally); //leftObj refers to object in our tally array
+  console.log(productRank.leftObj.name + ' has ' + productRank.leftObj.tally);
   productRank.showResults();//calling function above
   productRank.displayImages();
 
-}); //leftEl is property that holds value
+});
 
 productRank.midEl.addEventListener('click', function(){
-  // productRank.tallyVotes();
   productRank.midObj.tally += 1;
   productRank.totalClicks += 1;
 
-  console.log(productRank.midObj.name + ' has ' + productRank.midObj.tally); //leftObj refers to object in our tally array
+  console.log(productRank.midObj.name + ' has ' + productRank.midObj.tally);
   productRank.showResults();//calling function above
   productRank.displayImages();
 
 });
 
 productRank.rightEl.addEventListener('click', function(){
-
   // productRank.tallyVotes();
   productRank.rightObj.tally += 1;
   productRank.totalClicks += 1;
 
-  console.log(productRank.rightObj.name + ' has ' + productRank.rightObj.tally); //leftObj refers to object in our tally array
+  console.log(productRank.rightObj.name + ' has ' + productRank.rightObj.tally);
   productRank.showResults();//calling function above
   productRank.displayImages();
 
 });
-// productRank.midEl.addEventListener('click', productRank.displayImages);
-// productRank.rightEl.addEventListener('click', productRank.displayImages);
 
 productRank.displayImages();
 
+var tblEl = document.getElementById('table');
+
+results.addEventListener('click',function(){
+ renderTotals();
+})
 
 
+function renderTotals(){
 
+  for (var i = 0; i < productNames.length; i++){
+  var trEl = document.createElement('tr');
+  tblEl.appendChild(trEl);
 
-//long way!
-//faster way: look at commonalities, product, name, filepath in each line below
-// var bag = new Product('bag', "img/bag.jpg");
-// var banana = new Product('banana', "img/banana.jpg");
-// var boots = new Product('boots', "img/boots.jpg");
-// var chair = new Product('chair', "img/chair.jpg");
-// var cthulhu = new Product('cthulhu', "img/cthulhu.jpg");
-// var dragon = new Product('dragon', "img/dragon.jpg");
-// var pen = new Product('pen', "img/pen.jpg");
-// var scissors = new Product('scissors', "img/scissors.jpg");
-// var shark = new Product('shark', "img/shark.jpg");
-// var sweep = new Product('sweep', "img/sweep.png");
-// var unicorn = new Product('unicorn', "img/unicorn.jpg");
-// var usb = new Product('usb', "img/usb.gif");
-// var water_can = new Product('water_can', "img/water_can.jpg");
-// var wine_glass = new Product('glass', "img/wine_glass.jpg");
+  var tdEl = document.createElement('td');
+  tdEl.textContent = productNames[i];
+  trEl.appendChild(tdEl);
+
+  var txEl = document.createElement('td');
+  txEl.textContent = allProducts[i].tally;
+  trEl.appendChild(txEl);
+}
+  tblEl.appendChild(trEl);
+}

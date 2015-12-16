@@ -1,9 +1,38 @@
 
-img {
-  width: 18.75em;
-  height: 18.75em;
-}
+@import url("normalize.css");
+@import url("skeleton.css");
+
 
 body{
-  background-color: green;
+  background-color: #143634;
+  font-family:'Open Sans Condensed','Century Gothic', 'Helvetica', sans-serif;
+  color: white;
+    font-size: 1.7em;
+  text-align: center;
+}
+
+table th {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 1.3em;
+}
+
+img {
+  width: 100%;
+  border-radius: 2em;
+  box-shadow: .2em .2em 1em black;
+  margin-bottom: 3em;
+}
+
+h1{
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 4em;
+}
+
+
+#bottomText {
+  padding-top: 3em;
+}
+
+button {
+  background-color: #FCFFF5;
 }
