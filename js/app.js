@@ -1,7 +1,7 @@
 
 
 var allProducts = [];
-var productNames = ['boots','chair','scissors', 'water_can', 'wine_glass', 'bag', 'banana', 'cthulhu', 'dragon', 'pen', 'shark', 'sweep', 'unicorn', 'usb'];
+var productNames = ['Boots','Chair','Scissors', 'water_can', 'wine_glass', 'Bag', 'Banana', 'Cthulhu', 'Dragon', 'Pen', 'Shark', 'Sweep', 'Unicorn', 'Usb'];
 var produceChart = document.getElementById('productChart')
 
 // CHART HERE
