@@ -3,6 +3,22 @@
 var allProducts = [];
 var productNames = ['boots','chair','scissors', 'water_can', 'wine_glass', 'bag', 'banana', 'cthulhu', 'dragon', 'pen', 'shark', 'sweep', 'unicorn', 'usb'];
 
+// CHART HERE
+
+var data = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.5)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            data: [65, 59, 80, 81, 56, 55, 40]
+        },
+    ]
+};
+
 function Product (name, path) {
   this.name = name;
   this.path = path;
@@ -11,6 +27,7 @@ function Product (name, path) {
   allProducts.push(this);
   // this.render();
 };
+
 
 //functions job is to create object--- this is replacing 14 var lines
 (function buildAlbum() {
@@ -122,3 +139,11 @@ function renderTotals(){
 }
   tblEl.appendChild(trEl);
 }
+
+
+
+
+
+
+var context = document.getElementById('productChart').getContext('2d');
+var myBarChart = new Chart(context).Bar(data);
