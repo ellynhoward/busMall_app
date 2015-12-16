@@ -7,25 +7,30 @@ body{
   background-color: #143634;
   font-family:'Open Sans Condensed','Century Gothic', 'Helvetica', sans-serif;
   color: white;
-    font-size: 1.7em;
+    font-size: 1.5em;
   text-align: center;
 }
 
-table th {
+/*table th {
   font-family: 'Shadows Into Light', cursive;
   font-size: 1.3em;
-}
+}*/
 
 img {
-  width: 100%;
+  width: 90%;
   border-radius: 2em;
   box-shadow: .2em .2em 1em black;
-  margin-bottom: 3em;
+  margin-bottom: 2.5em;
 }
 
 h1{
   font-family: 'Shadows Into Light', cursive;
   font-size: 4em;
+  margin-top: .5em;
+}
+
+#chart h1{
+  margin-top: 100px;
 }
 
 
@@ -35,4 +40,10 @@ h1{
 
 button {
   background-color: #FCFFF5;
+  margin-bottom: 2em;
+}
+
+canvas {
+  width: 43.75em;
+  height: 31.25em;
 }
