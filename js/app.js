@@ -1,30 +1,34 @@
 
 
 var allProducts = [];
-var productNames = ['boots','chair','scissors', 'water_can', 'wine_glass', 'bag', 'banana', 'cthulhu', 'dragon', 'pen', 'shark', 'sweep', 'unicorn', 'usb'];
+var productNames = ['Boots','Chair','Scissors', 'water_can', 'wine_glass', 'Bag', 'Banana', 'Cthulhu', 'Dragon', 'Pen', 'Shark', 'Sweep', 'Unicorn', 'Usb'];
+var produceChart = document.getElementById('productChart')
 
 // CHART HERE
 
 var data = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: [],
     datasets: [
         {
-            label: "My First dataset",
+            label: "My dataset",
             fillColor: "rgba(220,220,220,0.5)",
             strokeColor: "rgba(220,220,220,0.8)",
             highlightFill: "rgba(220,220,220,0.75)",
             highlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 80, 81, 56, 55, 40]
+            data: []
+
         },
     ]
 };
 
+// original stuff
 function Product (name, path) {
   this.name = name;
   this.path = path;
   this.tally = 0;
   this.views = 0;
   allProducts.push(this);
+  data.labels.push(name);
   // this.render();
 };
 
@@ -44,8 +48,9 @@ var productRank = {
   leftObj: null,
   midObj: null,
   rightObj: null,
-  resultsEl: document.getElementById('results'), //results is in html button id
+  barChart: null,
 
+  resultsEl: document.getElementById('results'), //results is in html button id
   //we need to grab into html
   leftEl: document.getElementById('img1'),
   midEl: document.getElementById('img2'),
@@ -76,13 +81,29 @@ var productRank = {
     productRank.rightEl.id = productRank.rightObj.name;
   },
 
+
+  // tallyClicks: function(elId) {
+  //   for(var i in allProducts){
+  //     if (allProducts[i].name === elId) {
+  //       allProducts[i].tally += 1;
+  //       this.totalClicks += 1;
+  //       // data.labels.push(name);
+  //       data.datasets[0].data.push(allProducts[i].tally)
+  //
+  //     }
+  //   }
+  // },
+
+
   //voting
   showResults: function(){
     if (this.totalClicks % 15 === 0){//total clicks mod 15.. mod does division and gived remainder
       this.resultsEl.hidden = false;
+      produceChart.hidden = false;
     }
   }
 };
+
 
 productRank.leftEl.addEventListener('click', function(){
   productRank.leftObj.tally += 1;
@@ -101,6 +122,7 @@ productRank.midEl.addEventListener('click', function(){
   productRank.showResults();//calling function above
   productRank.displayImages();
 
+
 });
 
 productRank.rightEl.addEventListener('click', function(){
@@ -112,38 +134,51 @@ productRank.rightEl.addEventListener('click', function(){
   productRank.showResults();//calling function above
   productRank.displayImages();
 
+
 });
 
 productRank.displayImages();
 
-var tblEl = document.getElementById('table');
 
 results.addEventListener('click',function(){
- renderTotals();
-})
-
-
-function renderTotals(){
-
-  for (var i = 0; i < productNames.length; i++){
-  var trEl = document.createElement('tr');
-  tblEl.appendChild(trEl);
-
-  var tdEl = document.createElement('td');
-  tdEl.textContent = productNames[i];
-  trEl.appendChild(tdEl);
-
-  var txEl = document.createElement('td');
-  txEl.textContent = allProducts[i].tally;
-  trEl.appendChild(txEl);
-}
-  tblEl.appendChild(trEl);
-}
+ // renderTotals();
+ createChart();
+});
 
 
 
+  var context = document.getElementById('productChart').getContext('2d');
+  var myBarChart = new Chart(context).Bar(data);
+
+function createChart(){
+    produceChart.hidden = false;
+    for (var i = 0; i < allProducts.length; i++) {
+    data.datasets[0].data[i] = allProducts[i].tally;
+
+  };
+  new Chart(context).Bar(data);
+  }
 
 
+// function renderTotals(){
+//
+// }
 
-var context = document.getElementById('productChart').getContext('2d');
-var myBarChart = new Chart(context).Bar(data);
+
+// var tblEl = document.getElementById('table');
+
+//if using table put back in function
+  // for (var i = 0; i < productNames.length; i++){
+//   var trEl = document.createElement('tr');
+//   tblEl.appendChild(trEl);
+//
+//   var tdEl = document.createElement('td');
+//   tdEl.textContent = productNames[i];
+//   trEl.appendChild(tdEl);
+//
+//   var txEl = document.createElement('td');
+//   txEl.textContent = allProducts[i].tally;
+//   trEl.appendChild(txEl);
+// }
+//   tblEl.appendChild(trEl);
+//}

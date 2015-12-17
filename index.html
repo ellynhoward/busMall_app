@@ -23,8 +23,8 @@
           <p>Below are a few products for which we are working our best to cater to your wishes, wants, and wonders! By selecting your preferred item of the three shown you are helping determine what product will most likely be offered in our catalog.</p>
 
         <h5> Please select your favorite:</h5>
-      </div>
-    </div>
+      </div><!-- closing columns-->
+    </div><!--closing container for header-->
 
     <div class="container">
         <div id="images" class="row">
@@ -40,26 +40,31 @@
         </div><!--closing img row-->
 
         <div class="row two columns offset-by-five columns">
-            <button type="click" name="button" id="results" hidden>View Results</button>
+            <a href = "#chart"><button type="click" name="button" id="results" hidden>View Results</button></a>
         </div>
     </div><!--closing container-->
 
 
-    <div class="container">
-      <div class="two columns">
-        <table id="table">
-          <th> Product </th>
-          <th> Tally </th>
-        </table>
-      </div><!--closing columns-->
-    </div><!--closing container-->
+
+    <section id="chart">
+      <h1> Product Chart </h1>
+        <canvas id="productChart"></canvas>
+    </section>
 
 
-  <h1> Product Chart </h1>
-    <canvas id="productChart" width="600" height="600"></canvas>
-
-
+    <!--  <div class="container">
+        <div class="two columns">
+          <table id="table">
+            <th> Product </th>
+            <th> Tally </th>
+          </table>
+        </div><!-- closing columns-->
+      <!--</div>--><!--closing container-->
       <!-- <div id="bottomText" class="row">
+
+
+
+
         <div class="one-third column u-pull-left">
           <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <p>
         </div>
@@ -71,7 +76,6 @@
         </div>
       </div> -->
 
-  <script src="js/app.js"></script>
-    </div>
+    <script src="js/app.js"></script>
   </body>
 </html>
