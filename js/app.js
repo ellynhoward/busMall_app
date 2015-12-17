@@ -42,6 +42,8 @@ function Product (name, path) {
   }
 })();
 
+
+
 //object literal
 var productRank = {
   totalClicks: 0,
@@ -134,7 +136,6 @@ productRank.rightEl.addEventListener('click', function(){
   productRank.showResults();//calling function above
   productRank.displayImages();
 
-
 });
 
 productRank.displayImages();
@@ -147,8 +148,8 @@ results.addEventListener('click',function(){
 
 
 
-  var context = document.getElementById('productChart').getContext('2d');
-  var myBarChart = new Chart(context).Bar(data);
+var context = document.getElementById('productChart').getContext('2d');
+var myBarChart = new Chart(context).Bar(data);
 
 function createChart(){
     produceChart.hidden = false;
@@ -157,8 +158,19 @@ function createChart(){
 
   };
   new Chart(context).Bar(data);
+
+  var setJson = JSON.stringify(data.datasets[0].data)
+    localStorage.setItem('allProducts', setJson);//value should be stringified objects
+    localStorage.allProducts
+  var getLocal = localStorage.getItem(data.datasets[0].data);
+  var getJson = JSON.parse(this.getLocal)//should be method name
   }
 
+
+
+//Check for local storage
+// function retrieveLocal(){
+//   }
 
 // function renderTotals(){
 //
