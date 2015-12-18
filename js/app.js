@@ -159,6 +159,7 @@ function createChart(){
   };
   new Chart(context).Bar(data);
 
+//Running from local storage
   var setJson = JSON.stringify(data.datasets[0].data)
     localStorage.setItem('allProducts', setJson);//value should be stringified objects
     localStorage.allProducts
@@ -167,10 +168,6 @@ function createChart(){
   }
 
 
-
-//Check for local storage
-// function retrieveLocal(){
-//   }
 
 // function renderTotals(){
 //
