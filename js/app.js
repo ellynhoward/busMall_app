@@ -2,23 +2,22 @@
 
 var allProducts = [];
 var productNames = ['Boots','Chair','Scissors', 'water_can', 'wine_glass', 'Bag', 'Banana', 'Cthulhu', 'Dragon', 'Pen', 'Shark', 'Sweep', 'Unicorn', 'Usb'];
-var produceChart = document.getElementById('productChart')
+var produceChart = document.getElementById('productChart');
 
 // CHART HERE
 
 var data = {
-    labels: [],
-    datasets: [
-        {
-            label: "My dataset",
-            fillColor: "rgba(220,220,220,0.5)",
-            strokeColor: "rgba(220,220,220,0.8)",
-            highlightFill: "rgba(220,220,220,0.75)",
-            highlightStroke: "rgba(220,220,220,1)",
-            data: []
-
-        },
-    ]
+  labels: [],
+  datasets: [
+    {
+      label:'My dataset',
+      fillColor:'rgba(220,220,220,0.5)',
+      strokeColor:'rgba(220,220,220,0.8)',
+      highlightFill:'rgba(220,220,220,0.75)',
+      highlightStroke:'rgba(220,220,220,1)',
+      data: []
+    },
+  ]
 };
 
 // original stuff
@@ -30,7 +29,7 @@ function Product (name, path) {
   allProducts.push(this);
   data.labels.push(name);
   // this.render();
-};
+}
 
 
 //functions job is to create object--- this is replacing 14 var lines
@@ -70,7 +69,7 @@ var productRank = {
     //to validate
     if(productRank.leftObj === productRank.midObj || productRank.leftObj === productRank.rightObj || productRank.midObj == productRank.rightObj)
     {
-    productRank.displayImages();
+      productRank.displayImages();
     }
 
     productRank.leftEl.src = productRank.leftObj.path;
@@ -140,10 +139,9 @@ productRank.rightEl.addEventListener('click', function(){
 
 productRank.displayImages();
 
-
 results.addEventListener('click',function(){
  // renderTotals();
- createChart();
+  createChart();
 });
 
 
@@ -152,20 +150,19 @@ var context = document.getElementById('productChart').getContext('2d');
 var myBarChart = new Chart(context).Bar(data);
 
 function createChart(){
-    produceChart.hidden = false;
-    for (var i = 0; i < allProducts.length; i++) {
+  produceChart.hidden = false;
+  for (var i = 0; i < allProducts.length; i++) {
     data.datasets[0].data[i] = allProducts[i].tally;
-
-  };
+  }
   new Chart(context).Bar(data);
 
 //Running from local storage
-  var setJson = JSON.stringify(data.datasets[0].data)
-    localStorage.setItem('allProducts', setJson);//value should be stringified objects
-    localStorage.allProducts
+  var setJson = JSON.stringify(data.datasets[0].data);
+  //value should be stringified objects localStorage.allProducts
+  localStorage.setItem('allProducts', setJson);
   var getLocal = localStorage.getItem(data.datasets[0].data);
-  var getJson = JSON.parse(this.getLocal)//should be method name
-  }
+  var getJson = JSON.parse(this.getLocal); //should be method name
+}
 
 
 
